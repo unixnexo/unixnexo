@@ -36,7 +36,7 @@ if (!isTouchDevice) {
         // when the mouse is not moving
         clearTimeout(notMoving);
         notMoving = setTimeout(() => {
-            console.log('standing like a mother fucker');
+            console.log('standing by');
         }, 500);
 
         // ring follows the cursor with a delay
