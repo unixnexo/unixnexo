@@ -1,0 +1,3 @@
+
+////////////////////
+- for wobbly text on scale, "will-change-transform" fixed it, not "will-change-auto"

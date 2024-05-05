@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Upgrade your outdated android phone to a higher android version">
+    <meta name='description' content="The method consist of installing an unofficial version of android, if the community had already developed a custom android ROM for your specific device model.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.css" rel="stylesheet"> 
+    <!-- Locomotive scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <title>Upgrade your outdated android phone to a higher android version! | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-04-18 23:50">18/4/2024</time>
+                <p>long</p>
+                <p class="bg-violet-500">phone stuff</p>
+            </blog-tags-div>
+
+            <h1>Upgrade your outdated android phone to a higher android version!</h1>
+
+            <blog-summary-box>The method consist of installing an unofficial version of android, if the community had already developed a custom android ROM for your specific device model.</blog-summary-box>
+
+            <blog-disclaimer-box>You can break your device. Know what you doing!</blog-disclaimer-box>
+
+            <p>
+                I'll only go through the basics, but I do give you some cool resources for more information. So, I'm talking about something like <a href="https://lineageos.org/" target="_blank">lineageos</a>. There are some other communities as well, but basically what they do is that they develop custom android ROMs so you can benefit from it, like installing the lates andriod version on a very old phone. I'll talk more about the benefits later.
+            </p>
+
+            <h3>Where to find the custom android version you want for your phone model?</h3>
+            <p>
+                Just search for it! Mostly you end up in <a href="https://xdaforums.com/">xdaforums</a>. For example here's the list of devices that the android 12 custom ROMs have been developed for: <a href="https://www.xda-developers.com/android-12-custom-rom/">xda-developers.com/android-12-custom-rom</a>, scroll to the middle of the page and you find the download links. 
+            </p>
+
+            <h3>Now how to actually do it?</h3>
+            <ul>
+                <li>Put the actuall custom ROM zip file into your phone's internal storage.</li>
+                <li>Turn on developer mode on your phone, and also check the USB debugging.</li>
+                <li>Download <a href="https://twrp.me/Devices/">Team Win Recovery Project</a> for your specific phone model, also be carefull about the region, it should be the same as your device.</li>
+                <li>Download <a href="https://odindownload.com/">odin</a> software.</li>
+                <li>Shutdown your phone, and boot it into recovery mode. Usually it's by pushing the power and volume down button, with home button, if your phone has it of course.</li>
+                <li>When in recovery mode, press the volume up button to go for downloading custom ROM.</li>
+                <li>Connect your phone to a computer.</li>
+                <li>Open up the odin software, you have to see something like below, if you don't, try reconnecting your phone.
+                    <img src="../../public/img/blog/odinSoftware.png" alt="odin software" />
+                </li>
+                <li>Click the AP button, and choose the Team Win Recovery Project file.
+                    <img src="../../public/img/blog/oadin2.png" alt="odin software" />
+                </li>
+                <li>Go to "Options" section and uncechk the "Auto Reboot".
+                    <img src="../../public/img/blog/odin3.png" alt="odin software" />
+                </li>
+                <li>Click the "Start" button, finally you have to see a "PASS" messaage.</li>
+                <li>Disconnect your phone from the computer, and push the power, volume up, home (if you have it) buttons. TWRP should boot up.</li>
+                <li>Swipe to allow modifications, then press wipe, andvanced wipe, check all the options except internal storage, then swipe to wipe.</li>
+                <li>Press the back button 3 times till you get to the main menu with all the options, and press install.</li>
+                <li>Find the custom ROM zip file and press it, then swipe.</li>
+                <li>Press "Wipe cache/Dalvik".</li>
+                <li>Press "Reboot System" to boot into the new version of the android.</li>
+            </ul>
+
+            <h3>Problem? check these out!</h3>
+            <a href="https://www.youtube.com/watch?v=HqgxGosXl6U" target="_blank">https://www.youtube.com/watch?v=HqgxGosXl6U</a>
+            <a href="https://www.youtube.com/watch?v=Yi6shX6LMjE&t=562s" target="_blank">https://www.youtube.com/watch?v=Yi6shX6LMjE&t=562s</a>
+
+            <h3>But why to use a custom andriod ROM?</h3>
+            <p>You tell me! There're plenty of reasons. You might wanna have the lates android on your very old phone, or you wanna experience android without google services to have more privacy, although you can install google services with "GApps" in a custom android ROM.</p>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+
+
+    <script src="../components/blogPost.js"></script>
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+    <script src="../locomotive.js"></script>
+
+</body>
+</html>

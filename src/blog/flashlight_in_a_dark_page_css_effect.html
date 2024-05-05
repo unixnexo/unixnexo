@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Flashlight in a dark page, a css effect based on mouse coordinates">
+    <meta name='description' content="The easiest way of achieving this effect is by using radial gradient that its position is based on mouse coordinates, and putting it on the whole page.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.css" rel="stylesheet"> 
+    <!-- Locomotive scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <title>Flashlight in a dark page, a css effect based on mouse coordinates | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-05-05 23:47">5/5/2024</time>
+                <p>short</p>
+                <p class="bg-blue-500">css stuff</p>
+            </blog-tags-div>
+
+            <h1>Flashlight in a dark page, a css effect based on mouse coordinates</h1>
+
+            <blog-summary-box>The easiest way of achieving this effect is by using radial gradient that its position is based on mouse coordinates, and putting it on the whole page.</blog-summary-box>
+
+            <h3>What the hell is "Flashlight in a dark page"?</h3>
+            <p>I'm talking about this kind of effect 👇, I just didn't know what's it called ¯\_(ツ)_/¯, so I made up a name.</p>
+            <figure>
+                <img src="../../public/img/blog/flashlightinadarkpage.gif" alt="unixnexo's 404 page" />
+                <figcaption style="margin: 0;">From unixnexo's 404 page</figcaption>
+            </figure>
+
+            <p>I've never thought I'd be so damn easy till I figured out how <a href="https://www.joshwcomeau.com/sdfasdfdsf/" target="_blank">joshwcomeau</a>'s 404 page works.</p>
+
+            <h3>How to do it?</h3>
+            <p>Give the <blog-highlight-code>root</blog-highlight-code> these styles:</p>
+
+<pre><code>:root::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    background: radial-gradient(circle 12vmax at var(--cursorX) var(--cursorY),
+     rgba(0, 0, 0, 0) 0%, 
+     rgba(0, 0, 0, .5) 80%, 
+     rgba(0, 0, 0, .8) 100%);
+}
+</code></pre>
+
+            <p>and define the value of css variables "cursorX" and "cursorY" based on mouse X and Y coordinates in JS:</p>
+
+<pre><code>document.addEventListener('mousemove', function(event) {
+    document.documentElement.style.setProperty('--cursorX', event.clientX + 'px');
+    document.documentElement.style.setProperty('--cursorY', event.clientY + 'px');
+});
+</code></pre>
+
+
+            <b><a href="../../404.html" target="_blank">Live demo</a>💫</b>
+
+            <h3>but how does it work?</h3>
+            <p>Well the secret sauce is the radial gradient used as the background that stands as an overlay on top of the whole page, I'm not experienced with gradients but let's break it down.</p>
+            <p>As it's called, it's a circle shaped gradient, meaning there's always a center so you can play with the radius. <blog-highlight-code>12vmax</blog-highlight-code> is the size, kind of the radius I was talking about. <blog-highlight-code>var(--cursorX) var(--cursorY)</blog-highlight-code> are obviously the position of the circle. The first two colors <blog-highlight-code>rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .5) 80%,</blog-highlight-code> are the circle colors, because a gradient contains at least two colors, and the last color <blog-highlight-code>rgba(0, 0, 0, .8) 100%</blog-highlight-code> is the color of the surrounding of the circle, which is the black overlay you see all over the page.</p>
+            <p>You getting what's going on right? the position of the circle changes based on the mouse movements, which results in the lighter colors, which is the circle, moving and creating kinda a flashlight effect.</p>
+            <p>I know it's kinda hard to get it if you're not familiar with gradients, but I suggest you visiting this great website called <a href="https://cssgradient.io/" target="_blank">cssgradient.io</a> and play around with the radial gradient to figure out something.</p>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+
+
+    <script src="../components/blogPost.js"></script>
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+    <script src="../locomotive.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>

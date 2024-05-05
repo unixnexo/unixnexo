@@ -1,0 +1,353 @@
+@import url(fonts.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+        
+    .hover-and-active-shadow {
+        @apply transition-colors rounded-md hover:bg-slate-700/15 active:bg-slate-700/30;
+    }
+
+    /** focuse inset shadow effect **/    
+    .inset-shadow-effect-dark {
+        box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
+        -webkit-box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
+    }
+
+    /** blog **/
+    ._hr-line {
+        @apply mt-3 mb-4 border-t-2 rounded-md border-sky-blue-main/50;
+    }
+
+    ._p-brief {
+        @apply text-xl line-clamp-2 font-Pally-Regular;
+    }
+
+    ._p-heading {
+        @apply text-2xl font-Pally-Medium;
+    }
+
+    ._div-tags {
+        @apply flex items-center mt-3 space-x-2 text-base font-Pally-Regular dark:[&>*]:bg-white/90 dark:[&>*]:text-black [&>*]:bg-black/90 [&>*]:text-white [&>*]:py-1 [&>*]:px-2 [&>*]:rounded-md;
+    }
+    
+    /** search tags btns **/
+    ._btn_tags_effect {
+        --animation-style: cubic-bezier(1, 0, 0, 1);
+        --buton-text-transition-delay: 400ms;
+      
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+    
+    ._btn_tags_effect_txt {
+        display: block;
+        transition: all var(--animation-style) var(--buton-text-transition-delay);
+        transform: translateY(0%);
+        will-change: auto;
+    }
+    
+    ._btn_tags_effect:after {
+        content: attr(data-content);
+        position: absolute; 
+        transform: translateY(-100%);
+        transition: all var(--animation-style) 320ms;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 15%;
+        bottom: 0;
+        opacity: 0;
+    }
+    
+    ._btn_tags_effect:hover:after {
+        content: attr(data-content);
+        position: absolute;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        top: 15%;
+        bottom: 0;
+        transform: translateY(0%);
+        transition: all var(--animation-style) 450ms; 
+        opacity: 1;
+    }
+    
+    
+    ._btn_tags_effect:hover ._btn_tags_effect_txt {
+        transform: translateY(130%);
+        transition: all var(--animation-style) var(--buton-text-transition-delay);
+        opacity: 0;
+    }
+    
+}
+
+
+/*** scrollbar ***/
+::-webkit-scrollbar {
+    /* need this one for the view transition api effect */
+    display: none; 
+}
+
+/* ::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: theme('colors.sky-blue-main');
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+} */
+
+/* for FireFox only */
+/* @supports (-moz-appearance:none) {
+    :root { 
+        scrollbar-width: thin;
+        scrollbar-color: theme('colors.sky-blue-main') transparent;
+    }
+} */
+
+
+/*** selection ***/
+::selection {
+    background-color: theme('colors.sky-blue-main');
+    color: black;
+}
+
+/*** loading bar ***/
+#hi-text, #loading-con {
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*** background noise effect ***/
+.noise {
+    animation: noise 1.2s steps(3) infinite both;
+    background: url(data:image/png;base64,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);
+    height: 400%;
+    left: -50%;
+    pointer-events: none;
+    position: fixed;
+    top: -50%;
+    width: 400%;
+    will-change: auto;
+    /* z-index: 20; */
+    /* z-index: 99999; */
+    opacity: .5
+}
+
+.noise{
+    animation: noise 1.2s steps(3) infinite both;
+    background: url(../public/img/noise.bd10eb86.png);
+    height: 200%;
+    left: -50%;
+    pointer-events: none;
+    position: fixed;
+    top: -50%;
+    width: 200%;
+    will-change: auto;
+    /* z-index: 10; */
+    /* z-index: 99998; */
+    opacity: .1
+}
+
+@keyframes noise {
+    0% {
+        transform: translate3d(1%,-1%,0)
+    }
+
+    10% {
+        transform: translate3d(-5%,-2%,0)
+    }
+
+    20% {
+        transform: translate3d(10%,5%,0)
+    }
+
+    30% {
+        transform: translate3d(5%,-11%,0)
+    }
+
+    40% {
+        transform: translate3d(-12%,-5%,0)
+    }
+
+    50% {
+        transform: translate3d(10%,9%,0)
+    }
+
+    60% {
+        transform: translate3d(15%,0,0)
+    }
+
+    70% {
+        transform: translate3d(-10%,8%,0)
+    }
+
+    80% {
+        transform: translate3d(10%,2%,0)
+    }
+
+    90% {
+        transform: translate3d(1%,5%,0)
+    }
+
+    to {
+        transform: translate3d(0,8%,0)
+    }
+}
+
+
+/*** control center ***/
+.space-y-4-test > * { /* the oroginal 'space-y' won't work with divide correctly */
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#control-center-flex-con > div > p,
+#control-center-flex-con > div > a,
+#control-center-flex-con > div > div {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+
+/* to solve the glitch in the transition of theme on fucking Safari iPhone / i like Safari don't get me wrong, but this time it got me hard */
+#control-center-flex-con, #gird-sec-1 {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+#control-center-flex-con > *, #gird-sec-1 > * {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+
+/*** savage duck ***/
+.thought {
+    background-color:#E3BF5C;
+    padding: 15px;
+    border-radius: 30px;
+    min-width: 40px;
+    max-width: 300px;
+    min-height: 150px;
+    display: none;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.thought:before,
+.thought:after {
+    content:"";
+    background-color:#E5C15D;
+    border-radius:50%;
+    display:block;
+    position:absolute;
+    z-index:-1;
+}
+
+.thought:before {
+    width:44px;
+    height:44px;
+    top:-12px;
+    left:28px;
+    box-shadow:-50px 30px 0 -12px #E5C15D;
+}
+
+.thought:after {
+    bottom:-10px;
+    right:26px;
+    width:30px;
+    height:30px;
+    box-shadow:40px -34px 0 0 #E5C15D,
+               -28px -6px 0 -2px #E5C15D,
+               -24px 17px 0 -6px #E5C15D,
+               -5px 25px 0 -10px #E5C15D;
+    
+}
+
+
+/*** ducky btn style ***/
+.ducky-btn-style {
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    outline: none;
+    padding: 7px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transform: translateZ(0);
+    transition: filter .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+  
+.ducky-btn-style:after {
+    background-clip: padding-box;
+    border: solid transparent;
+    border-radius: 16px;
+    border-width: 0 0 4px;
+    bottom: -4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+  
+.ducky-btn-style-blue:after {
+    background-color: theme('colors.sky-blue-main');
+}
+  
+.ducky-btn-style-red:after {
+    background-color: theme('colors.red.600');
+}
+  
+.ducky-btn-style:hover:not(:disabled) {
+    filter: brightness(1.1);
+    -webkit-filter: brightness(1.1);
+}
+  
+.ducky-btn-style:active {
+    border-width: 4px 0 0;
+    background: none;
+}
+
+
+
+/*** horizontal auto scroll ***/
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.horizontal-scroll-content {
+  animation: 17s slide infinite linear;
+}
+
+.horizontal-scroll-con:hover .horizontal-scroll-content {
+    animation-play-state: paused;
+}
+
+
+/* test//////// */
+
+
