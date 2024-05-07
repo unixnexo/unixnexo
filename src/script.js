@@ -16,7 +16,7 @@ const getLocalTime = () => {
 };
 
 getLocalTime();
-setInterval(getLocalTime, '6000'); // 1 min
+setInterval(getLocalTime, '60000'); // 1 min
 
 
 /**
@@ -32,6 +32,7 @@ const getLocalWeather = () => {
         const temperature = Math.floor(data.main.temp);
         localWeather.innerHTML = temperature + "°C";
         localWeatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        localWeatherIcon.classList.remove('hidden');
     })
     .catch(error => {
         localWeather.innerHTML = '¯\\_(ツ)_/¯';
