@@ -2840,6 +2840,21 @@ video {
   margin-right: 1.25rem;
 }
 
+.\*\:mx-3 > * {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+
+.\*\:mx-0 > * {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.\*\:mx-2 > * {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
 .\*\:mt-3 > * {
   margin-top: 0.75rem;
 }
@@ -2850,6 +2865,14 @@ video {
 
 .\*\:inline > * {
   display: inline;
+}
+
+.\*\:flex > * {
+  display: flex;
+}
+
+.\*\:inline-flex > * {
+  display: inline-flex;
 }
 
 .\*\:h-10 > * {

@@ -258,6 +258,17 @@ if (!isTouchDevice) {
 }
 
 
+/**
+ * horizontal auto scroll
+ */
+const horizontalScrollContentCopy = document.querySelector('.horizontal-scroll-content').cloneNode(true);
+document.querySelector('.horizontal-scroll-con').appendChild(horizontalScrollContentCopy);
+
+
+
+
+
+
 
 
 ////////////////////////////test
