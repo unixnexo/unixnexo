@@ -260,10 +260,10 @@ if (!isTouchDevice) {
 
 
 /**
- * horizontal auto scroll
+ * horizontal auto scroll ||| *rn it's duplicated manually from the html*
  */
-const horizontalScrollContentCopy = document.querySelector('.horizontal-scroll-content').cloneNode(true);
-document.querySelector('.horizontal-scroll-con').appendChild(horizontalScrollContentCopy);
+// const horizontalScrollContentCopy = document.querySelector('.horizontal-scroll-content').cloneNode(true);
+// document.querySelector('.horizontal-scroll-con').appendChild(horizontalScrollContentCopy);
 
 
 
