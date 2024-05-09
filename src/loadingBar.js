@@ -25,7 +25,7 @@ function startLoading() {
 startLoading();
 
 let stateCheck = setInterval(() => {
-    if (document.readyState = 'complete' && progressBar.getAttribute('data-completed') === 'true') {
+    if (document.readyState === 'complete' && progressBar.getAttribute('data-completed') === 'true') {
         clearInterval(stateCheck);
         loadContent(); 
     }
@@ -48,6 +48,5 @@ async function loadContent() {
     noise.classList.remove('z-30');
 
 }
-
 
 
