@@ -267,12 +267,31 @@ document.querySelector('.horizontal-scroll-con').appendChild(horizontalScrollCon
 
 
 
+/**
+ * touchable actions for touch devices
+ */
+// the variable below has already been declared in pointer.js file - checks whether the device is touch or not
+// didn't want to use hammer.js for something too little 
 
+if (isTouchDevice) {
+    const touchResponse = document.querySelectorAll('.touchableResponse');
+    touchResponse.forEach((touchElement) => {
+        touchElement.addEventListener('touchstart', () => {
+            touchElement.classList.add('bg-slate-700/30');
+        });
+        touchElement.addEventListener('touchend', () => {
+            setTimeout(() => {
+                touchElement.classList.remove('bg-slate-700/30');
+            }, 300);
+        });
+    });
+}
 
 
 
 
 ////////////////////////////test
+
 
 
 
