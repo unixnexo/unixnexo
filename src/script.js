@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         dontBeShyTextMe();
         savageDuckCon.scrollIntoView({ behavior: 'smooth' });
-    }, 40000);
+    }, 4000);
 });
 
 
