@@ -291,7 +291,12 @@ if (isTouchDevice) {
 
 
 ////////////////////////////test
-
+new PerformanceObserver((entryList) => {
+    for (const entry of entryList.getEntries()) {
+        const elm = entry.element;
+        console.log(elm);
+    }
+}).observe({type: 'largest-contentful-paint', buffered: true});
 
 
 
