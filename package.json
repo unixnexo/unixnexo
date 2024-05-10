@@ -1,12 +1,10 @@
 {
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./src/output.css --watch",
-    "production": "tailwindcss -o ./src/input.css --minify"
+    "production": "tailwindcss -o ./src/output.css --minify"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.12"
-  },
-  "dependencies": {
-    "caniuse-lite": "^1.0.30001611"
+    "@tailwindcss/typography": "^0.5.12",
+    "tailwindcss": "^3.4.3"
   }
 }
