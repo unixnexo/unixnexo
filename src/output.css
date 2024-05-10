@@ -1399,7 +1399,7 @@ video {
   background-color: rgb(51 65 85 / 0.3);
 }
 
-/** focus inset shadow effect **/
+/** focuse inset shadow effect **/
 
 /** blog **/
 
@@ -1672,6 +1672,10 @@ video {
   height: 100vh;
 }
 
+.h-\[180px\] {
+  height: 180px;
+}
+
 .w-0 {
   width: 0px;
 }
@@ -1694,6 +1698,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-\[180px\] {
+  width: 180px;
 }
 
 .max-w-3xl {
@@ -2280,11 +2288,9 @@ video {
 /* ::-webkit-scrollbar {
     width: 4px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: theme('colors.sky-blue-main');
 }
-
 ::-webkit-scrollbar-track {
     background-color: transparent;
 } */
@@ -2528,9 +2534,9 @@ video {
 /* test//////// */
 
 .\*\:inset-shadow-effect-dark > * {
-  box-shadow: 0px 0px 400px 200px rgba(0,0,0,1);
-  -webkit-box-shadow: 0px 0px 400px 200px rgba(0,0,0,1);
-  -moz-box-shadow: 0px 0px 400px 200px rgba(0,0,0,1);
+  box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 400px 200px rgba(0,0,0,0.75);
 }
 
 @media (min-width: 768px) {
@@ -2874,6 +2880,10 @@ video {
 
 .\*\:w-full > * {
   width: 100%;
+}
+
+.\*\:w-1\/2 > * {
+  width: 50%;
 }
 
 .\*\:p-0 > * {
@@ -3250,5 +3260,3 @@ video {
   --tw-shadow-color: #000;
   --tw-shadow: var(--tw-shadow-colored);
 }
-
-
