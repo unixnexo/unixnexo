@@ -21,7 +21,7 @@ class UnixPhotoSMall extends HTMLElement {
 
     connectedCallback() {
         this.innerHTML = `
-            <img src="../../public/img/unix.png" width="50px" class="rounded-full" alt="Unix's photo" />
+            <img src="../../public/img/unix.webp" width="50px" class="rounded-full" alt="Unix's photo" />
         `;
     }
 }
