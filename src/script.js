@@ -278,12 +278,12 @@ if (isTouchDevice) {
     touchResponse.forEach((touchElement) => {
         touchElement.addEventListener('touchstart', () => {
             touchElement.classList.add('bg-slate-700/30');
-        });
+        }, { passive: true });
         touchElement.addEventListener('touchend', () => {
             setTimeout(() => {
                 touchElement.classList.remove('bg-slate-700/30');
             }, 300);
-        });
+        }, { passive: true });
     });
 }
 
@@ -291,12 +291,12 @@ if (isTouchDevice) {
 
 
 ////////////////////////////test
-new PerformanceObserver((entryList) => {
-    for (const entry of entryList.getEntries()) {
-        const elm = entry.element;
-        console.log(elm);
-    }
-}).observe({type: 'largest-contentful-paint', buffered: true});
+// new PerformanceObserver((entryList) => {
+//     for (const entry of entryList.getEntries()) {
+//         const elm = entry.element;
+//         console.log(elm);
+//     }
+// }).observe({type: 'largest-contentful-paint', buffered: true});
 
 
 
