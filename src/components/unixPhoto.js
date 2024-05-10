@@ -5,9 +5,8 @@ class UnixPhoto extends HTMLElement {
 
     connectedCallback() {
         const width = this.getAttribute('width');
-        const height = this.getAttribute('height');
         this.innerHTML = `
-            <img src="public/img/unix.webp" id="prof-pic" width="${width}" height="${height}" class="rounded-full shadow-xl shadow-gray-400 dark:shadow-[#1A1819]" alt="Unix's photo" />
+            <img src="public/img/unix.webp" id="prof-pic" width="${width}" class="rounded-full shadow-xl shadow-gray-400 dark:shadow-[#1A1819]" alt="Unix's photo" />
         `;
     }
 }
