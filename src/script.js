@@ -149,10 +149,36 @@ const dontBeShyTextMe = () => {
 
 };
 
+// to set the position based on the scroll - for touch devices
+function adjustPosition() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    savageDuckCon.style.top = scrollY + 'px';
+    console.log(scrollY);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-        dontBeShyTextMe();
-        savageDuckCon.scrollIntoView({ behavior: 'smooth' });
+        // for devices without touch - variable below has been declared in pointer.js
+        if (!isTouchDevice)  {
+            dontBeShyTextMe();
+        }
+
+        // for touch devices - variable below has been declared in pointer.js
+        if (isTouchDevice)  {
+            let timeout;
+
+            const scrollHandlerForTouchDevices = () => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    dontBeShyTextMe();
+                    adjustPosition();
+                    window.removeEventListener('scroll', scrollHandlerForTouchDevices);
+                }, 200); 
+            };
+            window.addEventListener('scroll', scrollHandlerForTouchDevices);
+        }
+        
+
     }, 40000);
 });
 
