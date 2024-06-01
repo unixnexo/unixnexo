@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark-mode-main">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin" />
+    <meta name='keywords' content="Using Telegram API even if the host doesn't let you to">
+    <meta name='description' content="By using Cloudflare worker you can proxy your request; You send the worker the request, and then the worker sends it to Telegram.">
+    <meta name='author' content="unixnexo, unix.nexo@icloud.com">
+    <meta name='owner' content="unixnexo">
+    <!-- tailwindCss -->
+    <link href="../output.min.css" rel="stylesheet"> 
+    <!-- favicon -->
+    <script async src="../favicon.js"></script>
+    <!-- components -->
+    <script defer src="../components/unixPhoto.js"></script>
+    <script async src="../components/blogPost.js"></script>
+    <title>Using Telegram API even if the host doesn't let you to | By unixnexo</title>   
+</head>
+<body class="dark:bg-dark-mode-main bg-light-mode-main opacity-0 transition-opacity duration-1000">
+    
+    <blog-main>
+
+        <blog-article>
+
+            <blog-flex-div>
+                <blog-get-back-btn></blog-get-back-btn>
+                <blog-author></blog-author>
+            </blog-flex-div>
+
+            <blog-tags-div>
+                <time datetime="2024-06-01 23:21">1/6/2024</time>
+                <p>long</p>
+                <p class="bg-amber-500">worKaround stuff</p>
+            </blog-tags-div>
+
+            <h1>Using Telegram API even if the host doesn't let you to</h1>
+
+            <blog-summary-box>By using Cloudflare worker you can proxy your request; You send the worker the request, and then the worker sends it to Telegram.</blog-summary-box>
+
+            <p>There are many reasons why you wanna do this. The most obvious one is: you can't access the API directly. Your host might be blocking it, Telegram could be banned in your region, or even you just don't want your servers to do the heavy lifting. By using a Telegram Bot and Cloudflare worker you can make your life easier. BTW, it's free.</p>
+
+            <p>So I'm going to send someone a simple message using a simple script.</p>
+
+            <h3>Let's start by creating a Bot in Telegram</h3>
+            <ul>
+                <li>Go to the <a target="_blank" href="https://t.me/BotFather">BotFather</a> in Telegram</li>
+                <li>Chose the command <blog-highlight-code>/newbot</blog-highlight-code> from the menu, and answer the questions</li>
+                <li>Copy the TOKEN</li>
+                <li>Find the CHAT_ID of the user you wish to message, in Telegram desktop you can go to <blog-highlight-code>settings>Advanced>Experimental settings>Show Peer IDs in Profile</blog-highlight-code>, now navigate to the user's profile and you should see the CHAT_ID.</li>
+            </ul>
+
+            <h3>Setting up the Cloudflare worker</h3>
+            <ul>
+                <li>Create a free account at <a target="_blank" href="https://www.cloudflare.com/">Cloudflare</a></li>
+                <li>On the left hand side, go to "Workers & Pages", then "Create application", and then "Create Worker"</li>
+                <li>Type down a name and deploy</li>
+                <li>Copy & paste these codes into the "worker.js" file
+<pre><code>async function handleRequest(request) {
+    const url = new URL(request.url);
+      
+    // Extract the 'text' parameter from the query string
+    const text = url.searchParams.get('text');
+      
+    if (!text) {
+        return new Response('Bad Request: "text" parameter is required', { status: 400 });
+    }
+      
+    // Construct the Telegram API URL
+    const telegramUrl = `https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text=${encodeURIComponent(text)}`;
+      
+    try {
+        const response = await fetch(telegramUrl);
+        return new Response(await response.text(), {
+            status: response.status,
+            headers: {
+              'content-type': 'application/json',
+            },
+        });
+    } catch (error) {
+        return new Response('Internal Server Error', {
+            status: 500,
+            headers: {
+              'content-type': 'text/plain',
+            },
+        });
+    }
+}
+      
+addEventListener('fetch', (event) => {
+    event.respondWith(handleRequest(event.request));
+});
+</code></pre>
+                </li>
+                <li>Put your TOKEN and CHAT_ID into the url: <blog-highlight-code>https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text=${encodeURIComponent(text)}</blog-highlight-code>, and finally deploy</li>
+                <p>What this script does is that it looks for a parameter called "text" in the url, and uses the Telegram API to send the message to the user.</p>
+                <p>Now get your Worker url and try it out; EX: <blog-highlight-code>https://your-worker-name.workers.dev/?text=hi mom!</blog-highlight-code>, the user should receive the message.</p>
+                <p>For the TOKEN and CHAT_ID you could also use an environment variable; Just search for it I'm sure you'll find it easily.</p>
+            </ul>
+            
+
+            <p>Github repo: <a target="_blank" href="https://github.com/unixnexo/telegram-api-bypass">github.com/unixnexo/telegram-api-bypass</a></p>
+
+            <blog-hr></blog-hr>
+            <blog-footer></blog-footer>
+
+        </blog-article>
+
+    </blog-main>
+
+    <!-- Locomotive scroll -->
+    <script defer src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+    <script defer src="../theme.js"></script>
+    <script src="../blogPages.js"></script>
+    <script defer src="../locomotive.js"></script>
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github-dark.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="../highlightJsInitiate.js"></script>
+
+</body>
+</html>

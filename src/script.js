@@ -55,6 +55,7 @@ const allSearch = document.getElementById('all_btn_search');
 const phoneSearch = document.getElementById('phone_btn_search');
 const softwareSearch = document.getElementById('software_btn_search');
 const cssSearch = document.getElementById('css_btn_search');
+const worKaroundSearch = document.getElementById('workaround_btn_search');
 
 allSearch.addEventListener('click', () => {
     dataPostTags.forEach(tag => {
@@ -99,6 +100,19 @@ cssSearch.addEventListener('click', () => {
         }
 
         if (tagValue === 'css') {
+            tag.classList.remove('hidden');
+        }
+    });
+});
+
+worKaroundSearch.addEventListener('click', () => {
+    dataPostTags.forEach(tag => {
+        const tagValue = tag.getAttribute('data-tag');
+        if (tagValue !== 'workaround') {
+            tag.classList.add('hidden');
+        }
+
+        if (tagValue === 'workaround') {
             tag.classList.remove('hidden');
         }
     });
@@ -178,7 +192,6 @@ document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('scroll', scrollHandlerForTouchDevices);
         }
         
-
     }, 40000);
 });
 
