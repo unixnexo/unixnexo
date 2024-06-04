@@ -1664,6 +1664,10 @@ video {
   height: 8rem;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -1686,6 +1690,10 @@ video {
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .w-8 {
@@ -2047,6 +2055,10 @@ video {
 
 .fill-sky-blue-main {
   fill: #4381C1;
+}
+
+.p-1 {
+  padding: 0.25rem;
 }
 
 .px-2 {
@@ -2887,14 +2899,6 @@ video {
   width: 100%;
 }
 
-.\*\:p-0 > * {
-  padding: 0px;
-}
-
-.\*\:p-0\.5 > * {
-  padding: 0.125rem;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .hover\:scale-very-small:hover {
     --tw-scale-x: 1.02;
@@ -2969,12 +2973,20 @@ video {
     min-height: 2.5rem;
   }
 
+  .md\:min-h-9 {
+    min-height: 2.25rem;
+  }
+
   .md\:w-1\/2 {
     width: 50%;
   }
 
   .md\:min-w-10 {
     min-width: 2.5rem;
+  }
+
+  .md\:min-w-9 {
+    min-width: 2.25rem;
   }
 
   .md\:grid-cols-4 {
@@ -2985,6 +2997,14 @@ video {
     --tw-space-x-reverse: 0;
     margin-right: calc(0px * var(--tw-space-x-reverse));
     margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .md\:p-2\.5 {
+    padding: 0.625rem;
   }
 
   .md\:text-4xl {
@@ -3098,6 +3118,16 @@ video {
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.\[\&\>\*\:not\(\:first-child\)\]\:p-0\.5>*:not(:first-child) {
+  padding: 0.125rem;
+}
+
+@media (min-width: 768px) {
+  .md\:\[\&\>\*\:not\(\:first-child\)\]\:p-2>*:not(:first-child) {
+    padding: 0.5rem;
+  }
 }
 
 .\[\&\>\*\:not\(\:last-child\)\]\:mb-1>*:not(:last-child) {
@@ -3237,12 +3267,6 @@ video {
   --tw-scale-x: .95;
   --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-@media (min-width: 768px) {
-  .md\:\[\&\>\*\]\:p-2>* {
-    padding: 0.5rem;
-  }
 }
 
 .dark\:\[\&\>\*\]\:bg-black\/50>*:where(.dark, .dark *) {
