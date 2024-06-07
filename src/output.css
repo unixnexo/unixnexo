@@ -2295,6 +2295,10 @@ video {
   will-change: transform;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 /*** scrollbar ***/
 
 ::-webkit-scrollbar {

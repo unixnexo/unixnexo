@@ -3,16 +3,24 @@
  */
 const myLocalTime = document.getElementById('my-local-time');
 const getLocalTime = () => {
-    fetch('https://worldtimeapi.org/api/timezone/Asia/Tehran/')
+  fetch('https://worldtimeapi.org/api/timezone/Asia/Tehran/')
     .then(response => response.json())
     .then(data => {
-        const datetime = new Date(data.datetime);
-        const time = datetime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        myLocalTime.innerHTML = time;
+      const datetime = new Date(data.datetime);
+      const utcOffset = data.utc_offset.split(':');
+      const offsetHours = parseInt(utcOffset[0], 10);
+      const offsetMinutes = parseInt(utcOffset[1], 10);
+      
+      // Adjust the datetime with the timezone offset
+      datetime.setHours(datetime.getUTCHours() + offsetHours);
+      datetime.setMinutes(datetime.getUTCMinutes() + offsetMinutes);
+
+      const time = datetime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      myLocalTime.innerHTML = time;
     })
     .catch(error => {
-        myLocalTime.innerHTML = '¯\\_(ツ)_/¯';
-    })
+      myLocalTime.innerHTML = '¯\\_(ツ)_/¯';
+    });
 };
 
 getLocalTime();

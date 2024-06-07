@@ -88,6 +88,11 @@
 }
 
 
+@view-transition {
+    navigation: auto;
+}
+
+
 /*** scrollbar ***/
 ::-webkit-scrollbar {
     /* need this one for the view transition api effect */
