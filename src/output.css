@@ -2179,6 +2179,11 @@ video {
   font-weight: 700;
 }
 
+.text-\[\#4B75AD\] {
+  --tw-text-opacity: 1;
+  color: rgb(75 117 173 / var(--tw-text-opacity));
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
